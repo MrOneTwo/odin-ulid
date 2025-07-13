@@ -124,7 +124,7 @@ test_encode :: proc(t: ^testing.T) {
 @(test)
 test_decode :: proc(t: ^testing.T) {
 	ulid_b32 :: "01JZX8XXZE9N750PHVB4PNN2WG"
-	ulid_expected : u128 = 2118346750954551625749575057819732880
+	ulid_expected : u128 : 2118346750954551625749575057819732880
 
 	ulid := decode(ulid_b32)
 
