@@ -41,7 +41,6 @@ ULID :: u128
 
 gen :: proc() -> ULID {
 	ts := u64(time.time_to_unix_nano(time.now()) / 1_000_000)
-	tmp := mem.ptr_to_bytes(&ts)[:6]
 
 	ulid : u128 = (u128(ts) << 80) | (rand.uint128() & (max(u128) >> 48))
 	return ulid
@@ -51,7 +50,7 @@ decode :: proc(ulid_str: string) -> ULID {
 	ulid : u128
 	j: u8 = u8(len(ulid_str))
 
-	for c, i in ulid_str {
+	for c in ulid_str {
 		j -= 1
 		bits : u128 = u128(DEC_TABLE_CROCKFORD[c])
 
