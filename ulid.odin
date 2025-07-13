@@ -97,9 +97,10 @@ rand_as_b32 :: proc(ulid: ^ULID) -> string {
 
 decode :: proc(ulid_str: string) -> ULID {
 	ulid : u128
+	j: u8 = u8(len(ulid_str) - 1)
 
 	for c, i in ulid_str {
-		j: u8 = u8(len(ulid_str) - i) - 1
+		j := j - u8(i)
 		bits : u128 = u128(DEC_TABLE_CROCKFORD[c])
 
 		ulid |= (bits << (j * 5))
