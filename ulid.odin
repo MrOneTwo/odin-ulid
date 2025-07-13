@@ -1,6 +1,5 @@
 package ulid
 
-import "core:fmt"
 import "core:time"
 import "core:strings"
 import "core:mem"
